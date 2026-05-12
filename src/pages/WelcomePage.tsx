@@ -22,7 +22,7 @@ function WelcomePage({ onStart, onLogin, onRegister }) {
 
   return (
     <div className="min-h-screen bg-[#f0f6fd] text-slate-800">
-      <nav className="sticky top-0 z-10 flex min-h-14 items-center justify-between gap-4 border-b border-blue-100 bg-white px-8 max-[720px]:flex-col max-[720px]:items-start max-[720px]:px-4 max-[720px]:py-3">
+      <nav className="relative z-10 flex min-h-14 items-center justify-between gap-4 border-b border-blue-100 bg-white px-8 max-[720px]:flex-col max-[720px]:items-start max-[720px]:px-4 max-[720px]:py-3">
         <Logo />
         <div className="flex flex-wrap items-center justify-end gap-1.5 max-[720px]:w-full max-[720px]:justify-start max-[460px]:[&>button]:flex-auto">
           {navItems.map(([label, id]) => (
