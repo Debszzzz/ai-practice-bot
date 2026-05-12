@@ -28,7 +28,7 @@ function WelcomePage({ onStart, onLogin, onRegister }) {
 
   return (
     <div ref={pageRef} className="h-dvh overflow-y-auto bg-[#f0f6fd] text-slate-800">
-      <nav className="relative z-10 flex min-h-14 items-center justify-between gap-4 border-b border-blue-100 bg-white px-8 max-[720px]:flex-col max-[720px]:items-start max-[720px]:px-4 max-[720px]:py-3">
+      <nav className="sticky top-0 z-10 flex min-h-14 items-center justify-between gap-4 border-b border-blue-100 bg-white px-8 max-[720px]:flex-col max-[720px]:items-start max-[720px]:px-4 max-[720px]:py-3">
         <button type="button" onClick={scrollToTop} className="rounded-lg text-left transition hover:opacity-80">
           <Logo />
         </button>
