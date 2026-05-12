@@ -13,28 +13,35 @@ function RegisterPage({ onBack, onLogin, onSuccess }) {
 
   const handleRegister = async (event) => {
     event.preventDefault();
+    if (loading) return;
+
     setError("");
     setMessage("");
     setLoading(true);
 
-    const { data, error: registerError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { data: { full_name: fullName } },
-    });
-    setLoading(false);
+    try {
+      const { data, error: registerError } = await supabase.auth.signUp({
+        email: email.trim(),
+        password,
+        options: { data: { full_name: fullName.trim() } },
+      });
 
-    if (registerError) {
-      setError(registerError.message);
-      return;
+      if (registerError) {
+        setError(registerError.message);
+        return;
+      }
+
+      if (data.session) {
+        onSuccess();
+        return;
+      }
+
+      setMessage("Account created. Check your email to confirm your account, then log in.");
+    } catch (requestError) {
+      setError(requestError.message || "Could not create your account. Please try again.");
+    } finally {
+      setLoading(false);
     }
-
-    if (data.session) {
-      onSuccess();
-      return;
-    }
-
-    setMessage("Account created. Check your email to confirm your account, then log in.");
   };
 
   return (

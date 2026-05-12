@@ -899,6 +899,8 @@ function SettingsView({ settings, setSettings, user }) {
 
   const updateEmail = async (event) => {
     event.preventDefault();
+    if (emailLoading) return;
+
     const trimmedEmail = email.trim();
 
     setSecurityMessage("");
@@ -928,6 +930,7 @@ function SettingsView({ settings, setSettings, user }) {
 
   const updatePassword = async (event) => {
     event.preventDefault();
+    if (passwordLoading) return;
 
     setSecurityMessage("");
     setSecurityError("");

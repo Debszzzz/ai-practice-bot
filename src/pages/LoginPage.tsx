@@ -11,18 +11,25 @@ function LoginPage({ onBack, onRegister, onSuccess }) {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    if (loading) return;
+
     setError("");
     setLoading(true);
 
-    const { error: loginError } = await supabase.auth.signInWithPassword({ email, password });
-    setLoading(false);
+    try {
+      const { error: loginError } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
 
-    if (loginError) {
-      setError(loginError.message);
-      return;
+      if (loginError) {
+        setError(loginError.message);
+        return;
+      }
+
+      onSuccess();
+    } catch (requestError) {
+      setError(requestError.message || "Could not log in. Please try again.");
+    } finally {
+      setLoading(false);
     }
-
-    onSuccess();
   };
 
   return (
