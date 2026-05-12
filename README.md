@@ -83,12 +83,12 @@ Update these names before submission:
 
 | Role | Member | Contribution |
 |---|---|---|
-| Leader | TODO | Planning, coordination, final review |
-| Frontend | TODO | React/TSX screens, routing state, responsive layout |
-| Backend | TODO | Supabase auth, database, RLS, CRUD services |
-| AI | TODO | Gemini prompts, AI feedback flow, fallback logic |
-| UI/UX | TODO | Interface design, usability, visual polish |
-| QA/Documentation | TODO | Testing, README, PDF documentation, demo preparation |
+| Leader | Laurence Dave Ebalang | Planning, coordination, final review |
+| Frontend | Kinley Lumosad | React/TSX screens, routing state, responsive layout |
+| Backend | Laurence Dave Ebalang | Supabase auth, database, RLS, CRUD services |
+| AI | Robict Abie Javier | Gemini prompts, AI feedback flow, fallback logic |
+| UI/UX |  Shoan Ray Palitoc | Interface design, usability, visual polish |
+| QA/Documentation | John Lorenz Cruz | Testing, README, PDF documentation, demo preparation |
 
 ## AI Use Disclosure
 
