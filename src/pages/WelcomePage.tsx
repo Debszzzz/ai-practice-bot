@@ -1,8 +1,10 @@
+import { useRef } from "react";
 import Button from "../components/common/Button";
 import Logo from "../components/layout/Logo";
 import { ROLE_CARDS } from "../data/constants";
 
 function WelcomePage({ onStart, onLogin, onRegister }) {
+  const pageRef = useRef(null);
   const navItems = [
     ["Features", "features"],
     ["Job Roles", "job-roles"],
@@ -20,10 +22,16 @@ function WelcomePage({ onStart, onLogin, onRegister }) {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const scrollToTop = () => {
+    pageRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <div className="h-dvh overflow-y-auto bg-[#f0f6fd] text-slate-800">
+    <div ref={pageRef} className="h-dvh overflow-y-auto bg-[#f0f6fd] text-slate-800">
       <nav className="relative z-10 flex min-h-14 items-center justify-between gap-4 border-b border-blue-100 bg-white px-8 max-[720px]:flex-col max-[720px]:items-start max-[720px]:px-4 max-[720px]:py-3">
-        <Logo />
+        <button type="button" onClick={scrollToTop} className="rounded-lg text-left transition hover:opacity-80">
+          <Logo />
+        </button>
         <div className="flex flex-wrap items-center justify-end gap-1.5 max-[720px]:w-full max-[720px]:justify-start max-[460px]:[&>button]:flex-auto">
           {navItems.map(([label, id]) => (
             <button
