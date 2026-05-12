@@ -86,7 +86,7 @@ Update these names before submission:
 | Leader | Laurence Dave Ebalang | Planning, coordination, final review |
 | Frontend | Kinley Lumosad | React/TSX screens, routing state, responsive layout |
 | Backend | Laurence Dave Ebalang | Supabase auth, database, RLS, CRUD services |
-| AI | Robict Abie Javier | Gemini prompts, AI feedback flow, fallback logic |
+| AI | Rovict Abie Javier | Gemini prompts, AI feedback flow, fallback logic |
 | UI/UX |  Shoan Ray Palitoc | Interface design, usability, visual polish |
 | QA/Documentation | John Lorenz Cruz | Testing, README, PDF documentation, demo preparation |
 
