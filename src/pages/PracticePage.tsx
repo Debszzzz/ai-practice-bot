@@ -561,11 +561,11 @@ function PracticePage({ user, onLogout }) {
 
   return (
     <>
-      <div className="flex h-screen flex-col overflow-hidden bg-slate-50 text-slate-800">
+      <div className="flex min-h-screen flex-col bg-slate-50 text-slate-800">
         <Header sessionLabel={state.sessionActive ? `${state.role} - ${state.diff}` : "No active session"} userEmail={user?.email} onReset={resetAll} onLogout={onLogout} />
-        <div className="flex min-h-0 flex-1 overflow-hidden max-[980px]:flex-col">
+        <div className="flex min-h-0 flex-1 overflow-y-auto max-[980px]:flex-col">
           <Sidebar activeView={activeView} onNavigate={handleViewChange} />
-          <main className="flex min-w-0 flex-1 flex-col overflow-hidden">
+          <main className="flex min-w-0 flex-1 flex-col overflow-y-auto">
             {activeView === "practice" && (
               <>
                 {!sessionStarted && <SetupBar role={role} diff={diff} qCount={qCount} setRole={setRole} setDiff={setDiff} setQCount={setQCount} onStart={startSession} />}
