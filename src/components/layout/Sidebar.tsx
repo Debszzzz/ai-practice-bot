@@ -12,8 +12,8 @@ const accountItems = [
 
 function Sidebar({ activeView = "practice", onNavigate }) {
   return (
-    <aside className="flex w-[220px] shrink-0 flex-col overflow-hidden border-r border-blue-100 bg-white px-3 pt-4 max-[980px]:order-[-1] max-[980px]:w-full max-[980px]:max-w-none max-[980px]:border-b max-[980px]:border-r-0 max-[980px]:px-3 max-[980px]:py-2.5">
-      <div className="flex-1 overflow-y-auto max-[980px]:overflow-x-auto max-[980px]:overflow-y-hidden">
+    <aside className="flex h-full w-[220px] shrink-0 flex-col overflow-hidden border-r border-blue-100 bg-white px-3 pt-4 max-[980px]:order-[-1] max-[980px]:h-auto max-[980px]:w-full max-[980px]:max-w-none max-[980px]:border-b max-[980px]:border-r-0 max-[980px]:px-3 max-[980px]:py-2.5">
+      <div className="flex-1 overflow-hidden max-[980px]:overflow-x-auto max-[980px]:overflow-y-hidden">
         <div className="flex flex-col gap-0.5 max-[980px]:min-w-max max-[980px]:flex-row max-[980px]:items-stretch max-[980px]:gap-2">
           <div className="px-2.5 pb-1 pt-2 text-[10px] font-bold uppercase tracking-[0.08em] text-slate-400 max-[980px]:hidden">Menu</div>
           {menuItems.map((item) => (

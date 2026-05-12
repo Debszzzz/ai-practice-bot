@@ -3,7 +3,7 @@ import Logo from "./Logo";
 
 function Header({ sessionLabel = "No active session", userEmail, onReset, onLogout }) {
   return (
-    <header className="flex h-14 shrink-0 items-center justify-between border-b border-blue-100 bg-white px-6">
+    <header className="sticky top-0 z-20 flex h-14 shrink-0 items-center justify-between border-b border-blue-100 bg-white px-6">
       <Logo />
       <div className="flex items-center gap-2.5">
         {userEmail && (

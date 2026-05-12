@@ -561,11 +561,11 @@ function PracticePage({ user, onLogout }) {
 
   return (
     <>
-      <div className="flex min-h-screen flex-col bg-slate-50 text-slate-800">
+      <div className="flex h-dvh flex-col overflow-hidden bg-slate-50 text-slate-800">
         <Header sessionLabel={state.sessionActive ? `${state.role} - ${state.diff}` : "No active session"} userEmail={user?.email} onReset={resetAll} onLogout={onLogout} />
-        <div className="flex min-h-0 flex-1 overflow-y-auto max-[980px]:flex-col">
+        <div className="flex min-h-0 flex-1 overflow-hidden max-[980px]:flex-col">
           <Sidebar activeView={activeView} onNavigate={handleViewChange} />
-          <main className="flex min-w-0 flex-1 flex-col overflow-y-auto">
+          <main className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
             {activeView === "practice" && (
               <>
                 {!sessionStarted && <SetupBar role={role} diff={diff} qCount={qCount} setRole={setRole} setDiff={setDiff} setQCount={setQCount} onStart={startSession} />}
@@ -584,7 +584,7 @@ function PracticePage({ user, onLogout }) {
             {activeView === "profile" && <ProfileView user={user} sessions={savedSessions} />}
             {activeView === "settings" && <SettingsView settings={settings} setSettings={setSettings} user={user} />}
           </main>
-          <div className="w-[248px] shrink-0 overflow-y-auto border-l border-blue-100 bg-white max-[980px]:hidden">
+          <div className="h-full w-[248px] shrink-0 overflow-hidden border-l border-blue-100 bg-white max-[980px]:hidden">
             <ProgressRing percent={ringPct} label={ringLabel} />
             <StatsPanel stats={stats} />
             <SkillsPanel skills={skills} flowSteps={FLOW_STEPS} flowStep={flowStep} />
@@ -1308,7 +1308,7 @@ function InputZone({ textareaRef, inputVal, setInputVal, inputDisabled, submitAn
   );
 }
 
-const viewPanelClass = "flex-1 overflow-y-auto p-6";
+const viewPanelClass = "min-h-0 flex-1 overflow-y-auto p-6";
 const viewKickerClass = "mb-1.5 text-[10px] font-extrabold uppercase tracking-[0.08em] text-blue-500";
 const viewTitleClass = "mb-2 text-xl font-extrabold text-blue-950";
 const viewCopyClass = "text-[13px] leading-7 text-slate-600";
