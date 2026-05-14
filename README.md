@@ -1,95 +1,325 @@
 # AI Practice Bot
 
-AI Practice Bot is a full-stack interview coaching web application. Users can create an account, choose a job role and difficulty, answer mock interview questions, receive AI-assisted feedback, and save their practice sessions for review.
+AI Practice Bot is a full-stack AI-powered interview coaching web application designed to help users practice realistic job interviews, receive intelligent feedback, improve weak areas, and track performance over time.
+
+The system combines cloud-based generative AI with a local NLP fallback engine to ensure reliable coaching even when external AI APIs are unavailable.
+
+---
+
+## Live Demo
+
+Vercel Deployment:
+https://ai-practice-bot-amber.vercel.app/
+
+GitHub Repository:
+https://github.com/Debszzzz/ai-practice-bot
+
+Demo Video:
+https://drive.google.com/file/d/1gcLmJ-2VC4_TcQL4RTvz-phVMR6_9fAw/view?usp=sharing
+
+---
+
+## Project Overview
+
+AI Practice Bot provides an interactive interview simulation platform where users can:
+
+* Create an account
+* Choose a job role
+* Select interview difficulty
+* Answer realistic interview questions
+* Receive AI-powered coaching and scoring
+* Review previous sessions
+* Track analytics and performance trends
+* Receive personalized recommendations
+
+The system was developed as a Project Implementation Task (PIT) for AI-Powered Web Application Development.
+
+---
 
 ## Features
 
-- Supabase email/password authentication
-- Account security settings for changing email and password
-- AI-powered interview questions, hints, follow-ups, sample answers, feedback, and session summaries
-- Local fallback question bank when the AI API is unavailable
-- Supabase CRUD for saved interview sessions and question records
-- Dashboard, session history, analytics, profile, and settings views
-- Responsive Tailwind CSS interface
-- React TypeScript component files (`.tsx`) with a gradual migration configuration
+### Authentication
 
-## Tech Stack
+* Supabase email/password authentication
+* Secure login and registration
+* Password reset workflow
+* Email update verification
+* Account security settings
 
-- Frontend: React, TypeScript/TSX, Vite, Tailwind CSS
-- Backend and database: Supabase Auth, Supabase Postgres, Row Level Security
-- AI: Gemini API
-- Deployment target: Vercel
-- Version control target: GitHub public repository
+### AI Interview Coaching
+
+* AI-generated interview questions
+* AI answer evaluation
+* AI-generated hints
+* AI follow-up questions
+* AI sample answers
+* AI topic explanations
+* AI session summaries
+
+### Hybrid AI Architecture
+
+Primary AI:
+
+* Google Gemini API
+
+Fallback AI:
+
+* Local rule-based NLP engine
+
+Fallback features:
+
+* Question generation
+* STAR-based answer evaluation
+* Keyword extraction
+* Follow-up detection
+* Personalized skill analysis
+
+### Session Management
+
+* Save practice sessions
+* View session history
+* Update session metadata
+* Delete sessions
+* View question-by-question feedback
+
+### Analytics
+
+* Performance dashboards
+* Role-based analytics
+* Difficulty-based analytics
+* Personalized strengths and weak areas
+* Practice recommendations
+
+### UI/UX
+
+* Responsive interface
+* Tailwind CSS design system
+* Animated modal-based settings and profile pages
+* Desktop-focused SaaS-style experience
+
+---
+
+## Technology Stack
+
+### Frontend
+
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* Framer Motion
+
+### Backend and Database
+
+* Supabase Auth
+* Supabase PostgreSQL
+* Row Level Security (RLS)
+
+### AI
+
+* Google Gemini API
+* Local NLP fallback engine
+
+### Deployment
+
+* Vercel
+
+### Version Control
+
+* GitHub (Public Repository)
+
+---
 
 ## Environment Variables
 
-Create a `.env` file from `.env.example`:
+Create a `.env` file:
 
 ```env
 VITE_GEMINI_API_KEY=your_gemini_api_key
 VITE_GEMINI_API_KEY_FALLBACK=your_backup_key
 VITE_SUPABASE_URL=your_supabase_url
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_DEBUG_SESSION_SAVE=false
 ```
 
 ## Supabase Setup
 
 1. Create a Supabase project.
-2. Run `supabase/schema.sql` in the Supabase SQL editor.
-3. Run `supabase/rls-policies.sql` in the Supabase SQL editor.
-4. Enable email authentication in Supabase Auth.
-5. Add the Supabase URL and anon key to `.env` and to Vercel environment variables.
+2. Enable Email Authentication.
+3. Run:
 
-## Local Development
+* `supabase/schema.sql`
+* `supabase/rls-policies.sql`
+
+4. Copy:
+
+* Supabase URL
+* Supabase anon key
+
+5. Add them to:
+
+* Local `.env`
+* Vercel Environment Variables
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/ai-practice-bot.git
+```
+
+Install dependencies:
 
 ```bash
 npm install
+```
+
+---
+
+## Local Development
+
+Run development server:
+
+```bash
 npm run dev
 ```
 
-Open the local URL printed by Vite.
+Open the local Vite URL.
+
+---
 
 ## Verification
 
+Lint:
+
 ```bash
 npm run lint
+```
+
+Build:
+
+```bash
 npm run build
 ```
 
-Both commands currently pass locally.
+Preview:
+
+```bash
+npm run preview
+```
+
+---
 
 ## Deployment
 
-Deploy with Vercel:
+Deploy using Vercel:
 
-1. Push the project to a public GitHub repository.
-2. Import the repository in Vercel.
-3. Set the environment variables listed above.
+1. Push project to GitHub.
+2. Import repository into Vercel.
+3. Configure environment variables.
 4. Use Vite defaults:
-   - Build command: `npm run build`
-   - Output directory: `dist`
 
-Deployment link: `TODO: add Vercel URL`
+Build Command:
 
-GitHub repository: `TODO: add public GitHub URL`
+```bash
+npm run build
+```
 
-## Documentation
+Output Directory:
 
-Project documentation is available in `docs/project-documentation.md`. A PDF export is generated at `docs/AI-Practice-Bot-Documentation.pdf`.
+```bash
+dist
+```
+
+---
+
+## Database Schema
+
+Main tables:
+
+### sessions
+
+Stores:
+
+* user_id
+* role
+* difficulty
+* total_score
+* accuracy
+* followups
+* created_at
+
+### questions
+
+Stores:
+
+* session_id
+* question
+* answer
+* score
+* feedback
+
+Row Level Security ensures users only access their own data.
+
+---
+
+## AI Processing Flow
+
+```text
+User starts session
+↓
+Gemini generates interview questions
+↓
+If Gemini unavailable:
+Local NLP engine activates
+↓
+User submits answer
+↓
+AI evaluates answer
+↓
+Follow-up or feedback generated
+↓
+Session summary created
+↓
+Results stored in Supabase
+```
+
+---
 
 ## Team Roles
 
-Update these names before submission:
+| Role             | Member                | Contribution                                     |
+| ---------------- | --------------------- | ------------------------------------------------ |
+| Leader           | Laurence Dave Ebalang | Planning, coordination, final review             |
+| Frontend         | Kinley Lumosad        | React UI, state management, responsive design    |
+| Backend          | Laurence Dave Ebalang | Supabase auth, database, RLS, CRUD services      |
+| AI               | Robict Abie Javier    | Gemini prompts, fallback AI logic                |
+| UI/UX            | Shoan Ray Palitoc     | Interface design, usability, visual polish       |
+| QA/Documentation | John Lorenz Cruz      | Testing, README, documentation, demo preparation |
 
-| Role | Member | Contribution |
-|---|---|---|
-| Leader | Laurence Dave Ebalang | Planning, coordination, final review |
-| Frontend | Kinley Lumosad | React/TSX screens, routing state, responsive layout |
-| Backend | Laurence Dave Ebalang | Supabase auth, database, RLS, CRUD services |
-| AI | Robict Abie Javier | Gemini prompts, AI feedback flow, fallback logic |
-| UI/UX |  Shoan Ray Palitoc | Interface design, usability, visual polish |
-| QA/Documentation | John Lorenz Cruz | Testing, README, PDF documentation, demo preparation |
+---
 
 ## AI Use Disclosure
 
-AI tools were used during development for code assistance, debugging, documentation drafting, and implementation planning. The application also uses Gemini as a runtime AI feature for interview coaching. Final code, configuration, and documentation should be reviewed by the team before submission.
+AI tools were used during:
+
+* brainstorming
+* implementation planning
+* debugging
+* documentation drafting
+
+Runtime AI features include:
+
+* Google Gemini API
+* Local NLP fallback engine
+
+All final code, configuration, testing, and documentation were reviewed by the development team.
+
+---
+
+## License
+
+Academic Project — Project Implementation Task (PIT)
